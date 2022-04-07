@@ -3,6 +3,7 @@ COPY go.mod go.sum /go/src/gitlab.com/ornellast/bucketeer/
 WORKDIR /go/src/gitlab.com/ornellast/bucketeer
 RUN go mod download
 COPY . /go/src/gitlab.com/ornellast/bucketeer/
+RUN rm -rf ./.git
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o build/bucketeer gitlab.com/ornellast/bucketeer
 
 FROM alpine

@@ -1,18 +1,21 @@
 package models
 
 import (
+	"encoding/xml"
 	"fmt"
 	"net/http"
 )
 
 type Item struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	CreatedAt   string `json:"created_at"`
+	XMLName     xml.Name `json:"-" xml:"item"`
+	ID          int      `json:"id" xml:"id,attr"`
+	Name        string   `json:"name" xml:"name"`
+	Description string   `json:"description" xml:"description"`
+	CreatedAt   string   `json:"created_at" xml:"createdAt"`
 }
 type ItemList struct {
-	Items []Item `json:"items"`
+	XMLName xml.Name `json:"-" xml:"items"`
+	Items   []Item   `json:"items" xml:"item"`
 }
 
 func (i *Item) Bind(r *http.Request) error {
