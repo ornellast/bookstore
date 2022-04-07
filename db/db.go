@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	HOST = "database"
-	PORT = 5432
+	host = "database"
+	port = 5432
 )
 
 var ErrNoMatch = fmt.Errorf("no matching record")
@@ -22,7 +22,7 @@ type Database struct {
 func Initialize(username, password, database string) (Database, error) {
 	db := Database{}
 
-	dns := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", HOST, PORT, username, password, database)
+	dns := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, username, password, database)
 
 	conn, err := sql.Open("postgres", dns)
 

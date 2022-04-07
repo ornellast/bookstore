@@ -8,8 +8,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
-	"gitlab.com/ornellast/bucketeer/db"
-	"gitlab.com/ornellast/bucketeer/models"
+	"github.com/ornellast/bucketeer/db"
+	"github.com/ornellast/bucketeer/models"
 )
 
 const itemIDKey = "itemId"
@@ -62,8 +62,7 @@ func getAllItems(w http.ResponseWriter, r *http.Request) {
 func createItem(w http.ResponseWriter, r *http.Request) {
 	item := &models.Item{}
 	if err := render.Bind(r, item); err != nil {
-		// render.Render(w, r, ErrBadRequest)
-		render.Render(w, r, ErrorRenderer(err))
+		render.Render(w, r, ErrBadRequest)
 		return
 	}
 

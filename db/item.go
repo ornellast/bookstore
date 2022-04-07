@@ -3,7 +3,7 @@ package db
 import (
 	"database/sql"
 
-	"gitlab.com/ornellast/bucketeer/models"
+	"github.com/ornellast/bucketeer/models"
 )
 
 func (db Database) GetAllItems() (*models.ItemList, error) {

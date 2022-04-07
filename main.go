@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
-	"gitlab.com/ornellast/bucketeer/db"
-	"gitlab.com/ornellast/bucketeer/handlers"
+	"github.com/ornellast/bucketeer/db"
+	"github.com/ornellast/bucketeer/handlers"
 )
 
 func main() {
