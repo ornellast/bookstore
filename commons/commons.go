@@ -4,23 +4,25 @@ const (
 	CTypeHeader  = "Content-Type"
 	AcceptHeader = "Accept"
 )
+
 const (
-	CTypeJson = "application/json"
-	CTypeText = "text/plain"
-	CTypeXml  = "application/xml"
+	CTypeAppJson = "application/json"
+	CTypeText    = "text/plain"
+	CTypeAppXml  = "application/xml"
+	CTypeTxtXml  = "text/xml"
 )
 
 const Endpoint = "https://jsonplaceholder.typicode.com"
 
-type contextBaseKey struct {
+type ContextBaseKey struct {
 	Name string
 }
 
-func (bk *contextBaseKey) String() string {
-	return "bucketeer/base/context/key/" + bk.Name
+func (bk *ContextBaseKey) String() string {
+	return "app/base/context/key/" + bk.Name
 }
 
-var ContenTypeCtxKey = &contextBaseKey{"CtxCType"}
+var AcceptContenTypeNegotiatedKey = &ContextBaseKey{Name: "Accept/Content-Type Accepted"}
 
 // func SetContentTypeHeader(w http.ResponseWriter, r *http.Request) {
 // 	cType := r.Context().Value(CTypeCtxKey).(string)
