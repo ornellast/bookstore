@@ -25,10 +25,10 @@ if [[ "${#SCRIPT_ARGS_STR}" -eq 0 ]]; then
 fi
 
 case "${1}" in
-  up | UP | Up)
+  UP | Up | up)
     up_database $SCRIPT_ARGS_STR
   ;;
-  down | DOWN | Down)
+  DOWN | Down | down)
     down_database $SCRIPT_ARGS_STR
   ;;
 esac
