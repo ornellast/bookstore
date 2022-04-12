@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	host = "database"
+	host = "host.docker.internal"
 	port = 5432
 )
 
@@ -23,6 +23,8 @@ func Initialize(username, password, database string) (Database, error) {
 	db := Database{}
 
 	dns := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, username, password, database)
+
+	fmt.Println("DNS: ", dns)
 
 	conn, err := sql.Open("postgres", dns)
 

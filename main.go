@@ -25,6 +25,8 @@ func main() {
 
 	dbUser, dbPass, dbName := os.Getenv("POSTGRES_USER"), os.Getenv("POSTGRES_PASSWORD"), os.Getenv("POSTGRES_DB")
 
+	fmt.Printf("Params: %s -> %s -> %s\n", dbUser, dbPass, dbName)
+
 	database, err := db.Initialize(dbUser, dbPass, dbName)
 
 	if err != nil {

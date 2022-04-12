@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/render"
 	"github.com/ornellast/bucketeer/commons"
 	"github.com/ornellast/bucketeer/db"
+	"github.com/ornellast/bucketeer/kafkaproducer"
 	"github.com/ornellast/bucketeer/models"
 )
 
@@ -58,6 +59,7 @@ func getAllItems(w http.ResponseWriter, r *http.Request) {
 		render.Render(w, r, ServerErrorRenderer(err))
 		return
 	}
+	go kafkaproducer.SendToKafka(&items.Items[0])
 
 	if err := render.Render(w, r, items); err != nil {
 		render.Render(w, r, ErrorRenderer(err))
@@ -76,7 +78,6 @@ func createItem(w http.ResponseWriter, r *http.Request) {
 		render.Render(w, r, ErrorRenderer(err))
 		return
 	}
-
 	if err := render.Render(w, r, item); err != nil {
 		render.Render(w, r, ServerErrorRenderer(err))
 		return
