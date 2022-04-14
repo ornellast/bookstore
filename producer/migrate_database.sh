@@ -6,7 +6,7 @@ readonly SCRIPT_ABSOLUTE_PATH="$(realpath $SCRIPT_RELATIVE_PATH)"
 readonly SCRIPT_NAME="$(basename $0)"
 readonly CURRENT_FOLDER="$(basename $PWD)"
 readonly RUNNING_FROM="${PWD}"
-readonly POSTGRESQL_URL="postgres://bucketeer:bucketeer_pass@localhost:5432/bucketeer_db?sslmode=disable"
+readonly POSTGRESQL_URL="postgres://bookstore:bookstore_pass@host.docker.internal:5432/bookstore_db?sslmode=disable"
 
 function up_database() {
   echo -e "up called with ${@}"

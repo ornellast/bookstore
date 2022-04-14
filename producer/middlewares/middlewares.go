@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/ornellast/bucketeer/producer/commons"
+	"github.com/ornellast/bookstore/producer/commons"
 )
 
 type Middleware = func(next http.Handler) http.Handler

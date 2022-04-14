@@ -1,22 +1,21 @@
-package kafkaproducer
+package kafkaprd
 
 import (
 	"context"
 	"encoding/json"
 	"log"
-	"strconv"
 
-	"github.com/ornellast/bucketeer/producer/models"
+	"github.com/ornellast/bookstore/producer/commons"
 	"github.com/segmentio/kafka-go"
 )
 
 var (
-	topicName string = "first-bucketeer"
-	brokers          = []string{"host.docker.internal:9092"}
+	// topicName string = "first-bookstore"
+	brokers = []string{"host.docker.internal:9092"}
 	// brokers          = []string{"kafka1:9092"}
 )
 
-func SendToKafka(item *models.Item) {
+func NewEvent(topicName string, msg commons.Identifier) error {
 	producer := kafka.NewWriter(kafka.WriterConfig{
 		Brokers: brokers,
 		Topic:   topicName,
@@ -30,21 +29,24 @@ func SendToKafka(item *models.Item) {
 		}
 	}()
 
-	itemByteArray, err := json.Marshal(item)
+	msgByteArray, err := json.Marshal(msg)
 
 	if err != nil {
-		log.Printf("Error when marshaling Item: %s\n\t%v", err, item)
-		return
+		log.Printf("Error when marshaling Book: %s\n\t%v", err, msg)
+		return err
 	}
 
 	err = producer.WriteMessages(context.Background(),
 		kafka.Message{
 
-			Key:   []byte(strconv.Itoa(item.ID)),
-			Value: itemByteArray,
+			Key:   []byte(msg.Id()),
+			Value: msgByteArray,
 		})
 
 	if err != nil {
 		log.Println("Failed to write messages: ", err)
+		return err
 	}
+
+	return nil
 }

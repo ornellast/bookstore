@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ornellast/bucketeer/producer/db"
-	"github.com/ornellast/bucketeer/producer/handlers"
+	"github.com/ornellast/bookstore/producer/db"
+	"github.com/ornellast/bookstore/producer/handlers"
 )
 
 func main() {

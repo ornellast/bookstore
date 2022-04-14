@@ -24,7 +24,6 @@ func (bk *ContextBaseKey) String() string {
 
 var AcceptContenTypeNegotiatedKey = &ContextBaseKey{Name: "Accept/Content-Type Accepted"}
 
-// func SetContentTypeHeader(w http.ResponseWriter, r *http.Request) {
-// 	cType := r.Context().Value(CTypeCtxKey).(string)
-// 	w.Header().Set(CTypeHeader, cType)
-// }
+type Identifier interface {
+	Id() string
+}

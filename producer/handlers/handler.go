@@ -5,9 +5,9 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
-	"github.com/ornellast/bucketeer/producer/commons"
-	"github.com/ornellast/bucketeer/producer/db"
-	"github.com/ornellast/bucketeer/producer/middlewares"
+	"github.com/ornellast/bookstore/producer/commons"
+	"github.com/ornellast/bookstore/producer/db"
+	"github.com/ornellast/bookstore/producer/middlewares"
 )
 
 var dbInstance db.Database
@@ -19,7 +19,7 @@ func NewHandler(db db.Database) http.Handler {
 	middlewares.ConfigureMiddlewares(router)
 	router.MethodNotAllowed(methodNotAllowedHandler)
 	router.NotFound(notFoundHandler)
-	itemsRoutes(router)
+	booksRoutes(router)
 	return router
 }
 
